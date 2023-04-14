@@ -1,4 +1,5 @@
 #include<iostream>
+
 #include<stdlib.h>
 #include<iomanip>
 #include<ctime>
@@ -7,6 +8,7 @@ using namespace std;
 int board[4][4];
 int dir_row[]={1,0,-1,0};
 int dir_colum[]={0,1,0,-1};
+
 pair<int,int>random_unoccupied_pos(){
     int occupied=1,row,colum;
     while(occupied){
@@ -33,10 +35,11 @@ void new_game(){
         }
     }
     add_number();
-    add_number();
+    add_number();  
 }
 void printUI(){
     system("cls");
+    cout<<"\n";
      for(int i=0;i<4;i++){
         for(int j=0;j<4;j++){
             if(board[i][j]==0){
@@ -45,9 +48,17 @@ void printUI(){
             else{
                 cout<<"|"<< setw(2) <<board[i][j]<< setw(2) <<"|";
             }
+            if(board[i][j]==2048){
+                        cout<<"--------------> CONGRATULATIONS <----------------\n";
+                        cout<<"-------------->  YOU WIN....!!  <------------------\n";
+                        exit(0);
+            }
+            
         }
         cout<<"\n";
     }
+    cout<<"\n";
+    
     cout<<"\nUse keys:\n";
     cout<<" N:New Game | W:Up | S:Down | D:Right | A:Left | Q:Quit\n";
 }
@@ -77,9 +88,10 @@ void move(int diraction){
                     board[i][j]=0;
                     move_possible=can_add_number=1;
                 }
+               
             }
         }
-        printUI();
+        printUI();//For Transmission effect,
     }while(move_possible);
     if(can_add_number)
         add_number();
@@ -91,6 +103,7 @@ int main(){
     diraction_commends['d']=1;
     diraction_commends['w']=2;
     diraction_commends['a']=3;
+    cout<<"\nJoin the tiles, get to 2048!\n";
     new_game();
     while(true){
         printUI();
