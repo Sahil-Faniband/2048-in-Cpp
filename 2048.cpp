@@ -67,7 +67,7 @@ void printUI(){
             }
             if(board[i][j]==2048){
                         cout<<"--------------> CONGRATULATIONS <----------------\n";
-                        cout<<"-------------->  YOU WIN....!!  <------------------\n";
+                        cout<<"----------> YOU WON THE GAME....!!  <-------------\n";
                         exit(0);
             }
             
